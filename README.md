@@ -1,37 +1,37 @@
-![Parked motorcycle](motorcycle.jpg)
+# Motorcycle Parts Sales Analysis
 
-You're working for a company that sells motorcycle parts, and they've asked for some help in analyzing their sales data!
+## Project Overview
+This project aims to analyze sales data for a motorcycle parts company that operates three warehouses (`North`, `Central`, and `West`). The focus is on understanding **wholesale revenue** by **product line**, grouped by **month** and **warehouse**. The analysis includes calculating **net revenue** after deducting payment fees.
 
-They operate three warehouses in the area, selling both retail and wholesale. They offer a variety of parts and accept credit cards, cash, and bank transfer as payment methods. However, each payment type incurs a different fee.
+---
 
-The board of directors wants to gain a better understanding of wholesale revenue by product line, and how this varies month-to-month and across warehouses. You have been tasked with calculating net revenue for each product line and grouping results by month and warehouse. The results should be filtered so that only `"Wholesale"` orders are included.
+## Objectives
+1. Calculate net revenue for each product line.
+2. Group results by month and warehouse.
+3. Filter the results to include only **wholesale** orders.
+4. Present the output in the following format:
 
-They have provided you with access to their database, which contains the following table called `sales`:
+| `product_line` | `month` | `warehouse` | `net_revenue` |
+|----------------|---------|-------------|---------------|
+| product_one    | ---     | ---         | ---           |
+| ...            | ...     | ...         | ...           |
 
-## Sales
-| Column | Data type | Description |
-|--------|-----------|-------------|
-| `order_number` | `VARCHAR` | Unique order number. |
-| `date` | `DATE` | Date of the order, from June to August 2021. |
-| `warehouse` | `VARCHAR` | The warehouse that the order was made from&mdash; `North`, `Central`, or `West`. |
-| `client_type` | `VARCHAR` | Whether the order was `Retail` or `Wholesale`. |
-| `product_line` | `VARCHAR` | Type of product ordered. |
-| `quantity` | `INT` | Number of products ordered. | 
-| `unit_price` | `FLOAT` | Price per product (dollars). |
-| `total` | `FLOAT` | Total price of the order (dollars). |
-| `payment` | `VARCHAR` | Payment method&mdash;`Credit card`, `Transfer`, or `Cash`. |
-| `payment_fee` | `FLOAT` | Percentage of `total` charged as a result of the `payment` method. |
+---
+
+## Database Table: `sales`
+
+### Table Schema
+| Column         | Data Type | Description                                                            |
+|----------------|-----------|------------------------------------------------------------------------|
+| `order_number` | `VARCHAR` | Unique order number.                                                  |
+| `date`         | `DATE`    | Date of the order (June to August 2021).                              |
+| `warehouse`    | `VARCHAR` | Warehouse from which the order was made (`North`, `Central`, `West`). |
+| `client_type`  | `VARCHAR` | Type of order (`Retail`, `Wholesale`).                                |
+| `product_line` | `VARCHAR` | Type of product ordered.                                              |
+| `quantity`     | `INT`     | Number of products ordered.                                           |
+| `unit_price`   | `FLOAT`   | Price per product in dollars.                                         |
+| `total`        | `FLOAT`   | Total price of the order in dollars.                                  |
+| `payment`      | `VARCHAR` | Payment method (`Credit card`, `Transfer`, `Cash`).                  |
+| `payment_fee`  | `FLOAT`   | Percentage of `total` charged as a payment fee.                      |
 
 
-Your query output should be presented in the following format:
-
-| `product_line` | `month` | `warehouse` |	`net_revenue` |
-|----------------|-----------|----------------------------|--------------|
-| product_one | --- | --- | --- |
-| product_one | --- | --- | --- |
-| product_one | --- | --- | --- |
-| product_one | --- | --- | --- |
-| product_one | --- | --- | --- |
-| product_one | --- | --- | --- |
-| product_two | --- | --- | --- |
-| ... | ... | ... | ... |
